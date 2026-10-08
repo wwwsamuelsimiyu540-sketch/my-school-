@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Students</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/config.js"></script>
+
+<script src="js/students.js" defer></script>
+
+</head>
+
+<body>
+
+<div class="app">
+
+<aside class="sidebar">
+
+<h2>School System</h2>
+
+<nav>
+
+<a href="dashboard.html">Dashboard</a>
+
+<a href="students.html">Students</a>
+
+<a href="teachers.html">Teachers</a>
+
+<a href="classes.html">Classes</a>
+
+<a href="subjects.html">Subjects</a>
+
+<a href="attendance.html">Attendance</a>
+
+<a href="exams.html">Exams</a>
+
+<a href="fees.html">Fees</a>
+
+<a href="payments.html">Payments</a>
+
+<a href="timetable.html">Timetable</a>
+
+</nav>
+
+</aside>
+
+
+<main class="main-content">
+
+<h1>Students</h1>
+
+<br>
+
+
+<div class="stat-card">
+
+<h2>Add Student</h2>
+
+<form id="studentForm">
+
+<input
+id="admissionNumber"
+placeholder="Admission Number"
+required
+>
+
+<input
+id="firstName"
+placeholder="First Name"
+required
+>
+
+<input
+id="middleName"
+placeholder="Middle Name"
+>
+
+<input
+id="lastName"
+placeholder="Last Name"
+required
+>
+
+<select id="gender">
+
+<option value="">Gender</option>
+
+<option value="Male">Male</option>
+
+<option value="Female">Female</option>
+
+</select>
+
+<input
+type="date"
+id="dateOfBirth"
+>
+
+<input
+id="phone"
+placeholder="Phone"
+>
+
+<input
+id="email"
+type="email"
+placeholder="Email"
+>
+
+<button type="submit">
+Add Student
+</button>
+
+</form>
+
+<p id="studentMessage"></p>
+
+</div>
+
+
+<br>
+
+
+<div class="table-container">
+
+<h2>Student List</h2>
+
+<br>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Admission No.</th>
+
+<th>Name</th>
+
+<th>Gender</th>
+
+<th>Phone</th>
+
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody id="studentTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</main>
+
+</div>
+
+</body>
+
+  </html>
