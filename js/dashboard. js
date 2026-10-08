@@ -1,0 +1,117 @@
+document.addEventListener("DOMContentLoaded", async () => {
+
+    const {
+        data: {
+            user
+        }
+    } = await supabaseClient.auth.getUser();
+
+    if (!user) {
+
+        window.location.href = "index.html";
+
+        return;
+    }
+
+    document.getElementById("userInfo").textContent =
+        user.email;
+
+
+    const { data: schoolUser } =
+        await supabaseClient
+            .from("school_users")
+            .select("school_id, role")
+            .eq("user_id", user.id)
+            .eq("status", "active")
+            .limit(1)
+            .single();
+
+
+    if (!schoolUser) {
+
+        alert("You are not assigned to a school.");
+
+        return;
+    }
+
+
+    const schoolId = schoolUser.school_id;
+
+
+    // STUDENTS
+
+    const { count: students } =
+        await supabaseClient
+            .from("students")
+            .select("*", {
+                count: "exact",
+                head: true
+            })
+            .eq("school_id", schoolId);
+
+
+    document.getElementById("studentCount")
+        .textContent = students || 0;
+
+
+    // TEACHERS
+
+    const { count: teachers } =
+        await supabaseClient
+            .from("teachers")
+            .select("*", {
+                count: "exact",
+                head: true
+            })
+            .eq("school_id", schoolId);
+
+
+    document.getElementById("teacherCount")
+        .textContent = teachers || 0;
+
+
+    // CLASSES
+
+    const { count: classes } =
+        await supabaseClient
+            .from("classes")
+            .select("*", {
+                count: "exact",
+                head: true
+            })
+            .eq("school_id", schoolId);
+
+
+    document.getElementById("classCount")
+        .textContent = classes || 0;
+
+
+    // SUBJECTS
+
+    const { count: subjects } =
+        await supabaseClient
+            .from("subjects")
+            .select("*", {
+                count: "exact",
+                head: true
+            })
+            .eq("school_id", schoolId);
+
+
+    document.getElementById("subjectCount")
+        .textContent = subjects || 0;
+
+
+    // LOGOUT
+
+    document
+        .getElementById("logoutButton")
+        .addEventListener("click", async () => {
+
+            await supabaseClient.auth.signOut();
+
+            window.location.href = "index.html";
+
+        });
+
+});
