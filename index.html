@@ -3,59 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>School Management System - Login</title>
-
+    <title>School Management System</title>
     <link rel="stylesheet" href="css/style.css">
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/config.js"></script>
-    <script src="js/auth.js" defer></script>
 </head>
 
-<body class="login-page">
+<body>
 
-<div class="login-container">
+<div class="auth-container">
 
-    <div class="login-card">
+    <div class="auth-box">
 
         <h1>School Management System</h1>
 
-        <p class="subtitle">
-            Sign in to your account
-        </p>
+        <!-- LOGIN -->
+        <div id="loginSection">
 
-        <form id="loginForm">
+            <h2>Login</h2>
 
-            <label>Email</label>
+            <form id="loginForm">
 
-            <input
-                type="email"
-                id="email"
-                placeholder="Enter your email"
-                required
-            >
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="Email"
+                    required
+                >
 
-            <label>Password</label>
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Password"
+                    required
+                >
 
-            <input
-                type="password"
-                id="password"
-                placeholder="Enter your password"
-                required
-            >
+                <button type="submit">Login</button>
 
-            <button type="submit">
-                Login
-            </button>
+            </form>
 
             <p id="loginMessage"></p>
 
-        </form>
+            <p>
+                Don't have an account?
+                <button type="button" onclick="showRegister()">
+                    Register
+                </button>
+            </p>
+
+        </div>
+
+
+        <!-- REGISTER -->
+        <div id="registerSection" style="display:none;">
+
+            <h2>Create Account</h2>
+
+            <form id="registerForm">
+
+                <input
+                    type="text"
+                    id="fullName"
+                    placeholder="Full Name"
+                    required
+                >
+
+                <input
+                    type="email"
+                    id="registerEmail"
+                    placeholder="Email"
+                    required
+                >
+
+                <input
+                    type="password"
+                    id="registerPassword"
+                    placeholder="Password"
+                    required
+                    minlength="6"
+                >
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm Password"
+                    required
+                >
+
+                <button type="submit">Register</button>
+
+            </form>
+
+            <p id="registerMessage"></p>
+
+            <p>
+                Already have an account?
+                <button type="button" onclick="showLogin()">
+                    Login
+                </button>
+            </p>
+
+        </div>
 
     </div>
 
 </div>
 
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+
 </body>
-</html>
+                    </html>
